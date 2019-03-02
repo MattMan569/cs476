@@ -7,6 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './core/header/header.component';
 import { LandingComponent } from './core/landing/landing.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { MessagesComponent } from './home/messages/messages.component';
+import { ProjectsComponent } from './home/projects/projects.component';
+import { CalendarComponent } from './home/calendar/calendar.component';
+import { UsersComponent } from './home/users/users.component';
 
 @NgModule({
     declarations: [
@@ -15,6 +19,10 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
         HeaderComponent,
         LandingComponent,
         NotFoundComponent,
+        MessagesComponent,
+        ProjectsComponent,
+        CalendarComponent,
+        UsersComponent,
     ],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],
