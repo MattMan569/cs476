@@ -1,0 +1,8 @@
+/* Fix BS4's height: 100% */
+.my-h-100 {
+    height: 100vh;
+}
+
+.mr-50 {
+    margin-right: 50%;
+}
