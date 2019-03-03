@@ -3,10 +3,19 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Projects</a>
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Messages</a>
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Calendar</a>
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Users</a>
+            <!-- TODO (matt): implement these as child routes -->
+            <a [routerLink]="['/projects']" routerLinkActive="active" class="nav-item nav-link"
+                >Projects</a
+            >
+            <a [routerLink]="['/messages']" routerLinkActive="active" class="nav-item nav-link"
+                >Messages</a
+            >
+            <a [routerLink]="['/calendar']" routerLinkActive="active" class="nav-item nav-link"
+                >Calendar</a
+            >
+            <a [routerLink]="['/users']" routerLinkActive="active" class="nav-item nav-link"
+                >Users</a
+            >
             <div class="nav-item dropdown">
                 <a
                     class="nav-link dropdown-toggle"
