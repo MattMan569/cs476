@@ -11,6 +11,7 @@ import { MessagesComponent } from './home/messages/messages.component';
 import { ProjectsComponent } from './home/projects/projects.component';
 import { CalendarComponent } from './home/calendar/calendar.component';
 import { UsersComponent } from './home/users/users.component';
+import { UserComponent } from './home/user/user.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { UsersComponent } from './home/users/users.component';
         ProjectsComponent,
         CalendarComponent,
         UsersComponent,
+        UserComponent,
     ],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],
