@@ -6,13 +6,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { LandingComponent } from './core/landing/landing.component';
-
-// Custom services
-import { AuthGuard } from './auth/auth-guard.service';
 import { CalendarComponent } from './home/calendar/calendar.component';
 import { MessagesComponent } from './home/messages/messages.component';
 import { ProjectsComponent } from './home/projects/projects.component';
 import { UsersComponent } from './home/users/users.component';
+
+// Custom services
+import { AuthGuard } from './auth/auth-guard.service';
 
 const routes: Routes = [
     { path: '', component: LandingComponent }, // Default page if user is not logged in
