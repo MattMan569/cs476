@@ -1,3 +1,5 @@
-<!-- Display the header on all but the landing page -->
-<app-header *ngIf="getRoute() != '/'"></app-header>
+<!-- Display the header on all but the landing and auth pages -->
+<app-header
+    *ngIf="getRoute() !== '/' && getRoute() !== '/signup' && getRoute() !== '/signin'"
+></app-header>
 <router-outlet></router-outlet>

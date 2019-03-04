@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
             middlename: new FormControl(),
             lastname: new FormControl(null, Validators.required),
             email: new FormControl(null, [Validators.required, Validators.email]),
-            phonenumber: new FormControl(null, Validators.required),
+            phonenumber: new FormControl(null, [Validators.required, Validators.minLength(16)]),
             companyoption: new FormControl('existing', Validators.required),
             companyname: new FormControl(null, null),
             companyjoincode: new FormControl(null, Validators.required),
