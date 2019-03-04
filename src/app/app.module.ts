@@ -1,9 +1,11 @@
 // Angular imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Vendors
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +35,7 @@ import { UserComponent } from './home/user/user.component';
         UsersComponent,
         UserComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, NgbModule],
+    imports: [BrowserModule, NgbModule, SchedulerModule, BrowserAnimationsModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
 })
