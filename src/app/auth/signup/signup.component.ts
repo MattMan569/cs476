@@ -21,10 +21,11 @@ export class SignupComponent implements OnInit {
             firstname: new FormControl(null, Validators.required),
             middlename: new FormControl(),
             lastname: new FormControl(null, Validators.required),
+            email: new FormControl(null, [Validators.required, Validators.email]),
+            phonenumber: new FormControl(null, Validators.required),
             companyoption: new FormControl('existing', Validators.required),
             companyname: new FormControl(null, null),
             companyjoincode: new FormControl(null, Validators.required),
-            email: new FormControl(null, [Validators.required, Validators.email]),
         });
 
         // Subscribe to changes in the form data
