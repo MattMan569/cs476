@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Angular calendar CSS file */
-@import '../node_modules/angular-calendar/css/angular-calendar.css';
-
 body {
     /* Make the background less blinding */
     background-color: #fcfcfcff !important;

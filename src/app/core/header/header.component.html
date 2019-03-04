@@ -16,17 +16,17 @@
             <a [routerLink]="['/users']" routerLinkActive="active" class="nav-item nav-link"
                 >Users</a
             >
-            <div class="nav-item dropdown">
+            <div ngbDropdown class="nav-item">
                 <a
-                    class="nav-link dropdown-toggle"
-                    id="navbarDropdownMenuLink"
-                    data-toggle="dropdown"
+                    ngbDropdownToggle
+                    class="nav-link"
+                    id="dropdownBasic1"
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
                     Manage Account
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <a [routerLink]="['#']" class="dropdown-item">View Profile</a>
                     <a [routerLink]="['/']" class="dropdown-item">Log out</a>
                 </div>
