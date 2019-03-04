@@ -1,6 +1,6 @@
 // https://www.telerik.com/kendo-angular-ui/components/scheduler/
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SchedulerEvent } from '@progress/kendo-angular-scheduler';
 import { sampleData, displayDate } from './events-utc';
