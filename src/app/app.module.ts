@@ -1,7 +1,14 @@
+// Angular imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Vendors
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// Modules
 import { AppRoutingModule } from './app-routing.module';
+
+// Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -26,7 +33,7 @@ import { UserComponent } from './home/user/user.component';
         UsersComponent,
         UserComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule],
+    imports: [BrowserModule, AppRoutingModule, NgbModule],
     providers: [],
     bootstrap: [AppComponent],
 })
