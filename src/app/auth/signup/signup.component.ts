@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-
-import { Observable } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -9,132 +8,78 @@ import { Observable } from 'rxjs';
     styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-    constructor() {}
+    private signupForm: FormGroup;
+    private companyNameLabel = 'Search for a company';
+    private lastValue = 'existing';
 
-    //
-
-    genders = ['male', 'female'];
-    forbiddenUsernames = ['Chris', 'Anna'];
-
-    signupForm: FormGroup;
-
-    companyNameLabel = 'Search for a company';
+    constructor(private router: Router) {}
 
     ngOnInit() {
         // Setup the form controls
+        // Arg 1: default, arg 2: validators
         this.signupForm = new FormGroup({
-            firstname: new FormControl(),
+            firstname: new FormControl(null, Validators.required),
             middlename: new FormControl(),
-            lastname: new FormControl(),
-            companyoption: new FormControl('existing'),
-            companyname: new FormControl(),
+            lastname: new FormControl(null, Validators.required),
+            companyoption: new FormControl('existing', Validators.required),
+            companyname: new FormControl(null, null),
+            companyjoincode: new FormControl(null, Validators.required),
+            email: new FormControl(null, [Validators.required, Validators.email]),
         });
 
         // Subscribe to changes in the form data
-        // to update the company nme lebel
+        // to update the company name label.
+        // New companies require a name to be input, existing ones do not.
         this.signupForm.valueChanges.subscribe(value => {
-            if (value.companyoption === 'new') {
-                this.companyNameLabel = 'Name of your new company';
-            } else {
-                this.companyNameLabel = 'Search for a company';
+            if (value.companyoption !== this.lastValue) {
+                if (value.companyoption === 'new') {
+                    this.lastValue = 'new';
+                    this.companyNameLabel = 'Name of your new company';
+                    this.signupForm.patchValue({ companyjoincode: this.randomString(6) });
+                    this.signupForm.get('companyname').setValidators([Validators.required]);
+                    this.signupForm.get('companyname').updateValueAndValidity();
+                } else {
+                    this.lastValue = 'existing';
+                    this.companyNameLabel = 'Search for a company';
+                    this.signupForm.patchValue({ companyjoincode: null });
+                    this.signupForm.get('companyname').setValidators(null);
+                    this.signupForm.get('companyname').updateValueAndValidity();
+                }
             }
         });
-
-        // Listen to changes in the form's values
-        // this.signupForm.valueChanges.subscribe(value => {
-        //     console.log(value);
-        // });
-
-        // Listen to changes in the form's status (VALID, INVALID, PENDING)
-        // this.signupForm.statusChanges.subscribe(status => {
-        //     console.log(status);
-        // });
-
-        // Override the form's values, eg) provide defaults
-        // this.signupForm.setValue({
-        //     userData: {
-        //         username: 'Max',
-        //         email: 'max@test.com'
-        //     },
-        //     gender: 'male',
-        //     hobbies: []
-        // });
-
-        // 'hobbies' requires the controls to be prepopulated
-        // Must add controls before setting the values
-        const defaultHobbies = ['hiking', 'cooking', 'eating'];
-        for (let i = 0; i < defaultHobbies.length; ++i) {
-            this.onAddHobby();
-        }
-
-        // Patch specific form values
-        this.signupForm.patchValue({
-            userData: {
-                username: 'Lucy',
-                email: 'lucy@test.com',
-            },
-            gender: 'female',
-            // Must already have controls
-            hobbies: defaultHobbies,
-        });
     }
 
-    // We already have the form,
-    // don't need a local reference
+    // Form submission
     onSubmit() {
         console.log(this.signupForm);
-        console.log(this.signupForm.value.userData.username);
-
-        this.signupForm.reset();
+        this.router.navigate(['/signin']);
     }
 
-    // Add a new control to the form
-    onAddHobby() {
-        (this.signupForm.get('hobbies') as FormArray).push(
-            new FormControl(null, Validators.required),
-        );
-
-        // Or:
-        // const control = new FormControl(null, Validators.required);
-        // (<FormArray>this.signupForm.get('hobbies')).push(control);
+    // Form cancelation
+    // Redirect back to landing page
+    onCancel() {
+        this.router.navigate(['/']);
     }
 
-    // Explicity define the type to prevent an error message in the HTML code
-    getHobbies() {
-        return (this.signupForm.get('hobbies') as FormArray).controls;
+    getCompanyNameLabel() {
+        return this.companyNameLabel;
     }
 
-    // Create a custom validator
-    // Returns a key value pair (key: string, value: bool)
-    forbiddenNames(control: FormControl): { [key: string]: boolean } {
-        // If the username is a key of the forbidden usernames
-        // Returns -1 if it is not found, which is interpretted as true by JS
-        if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
-            return { nameIsForbidden: true };
+    getForm() {
+        return this.signupForm;
+    }
+
+    // Generate a random string
+    private randomString(length: number) {
+        let randomString = '';
+        const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        for (let i = 0; i < length; i++) {
+            randomString += possibleCharacters.charAt(
+                Math.floor(Math.random() * possibleCharacters.length),
+            );
         }
-        // If validation is successful, you must pass
-        // nothing or null, not false.
-        return null;
 
-        // Wrong:
-        // return { nameIsForbidden: false };
-    }
-
-    // Custom asynchronous validator
-    // Form will get class ng-pending while the async validator is being resolved
-    forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
-        const promise = new Promise<any>((resolve, reject) => {
-            // Simulate a server by waiting 1.5s
-            // Send emailIsForbidden if email is test@test.com
-            setTimeout(() => {
-                if (control.value === 'test@test.com') {
-                    resolve({ emailIsForbidden: true });
-                } else {
-                    resolve(null);
-                }
-            }, 1500);
-        });
-
-        return promise;
+        return randomString;
     }
 }
