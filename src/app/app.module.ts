@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Vendors
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +22,7 @@ import { ProjectsComponent } from './home/projects/projects.component';
 import { CalendarComponent } from './home/calendar/calendar.component';
 import { UsersComponent } from './home/users/users.component';
 import { UserComponent } from './home/user/user.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
     declarations: [
@@ -34,8 +36,16 @@ import { UserComponent } from './home/user/user.component';
         CalendarComponent,
         UsersComponent,
         UserComponent,
+        SignupComponent,
     ],
-    imports: [BrowserModule, NgbModule, SchedulerModule, BrowserAnimationsModule, AppRoutingModule],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        NgbModule,
+        SchedulerModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+    ],
     providers: [],
     bootstrap: [AppComponent],
 })
