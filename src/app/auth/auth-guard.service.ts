@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
     constructor() {}
 
     canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        // Todo (matt): implement isAuthenticated()
+        // TODO (matt): implement isAuthenticated()
         return true;
     }
 }

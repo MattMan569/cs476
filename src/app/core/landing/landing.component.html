@@ -1,4 +1,14 @@
-<h1>Welcome to {{ getTitle() }}!</h1>
-
-<button class="btn btn-success">Sign Up</button>
-<button [routerLink]="['/home']" class="btn btn-primary">Log In</button>
+<div class="container-fluid my-h-100">
+    <div class="row justify-content-center align-items-end h-25">
+        <div class="col-6">
+            <h1 class="text-center text-light">Welcome to {{ getTitle() }}!</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-end text-center h-25">
+        <div class="col-4 btn-group">
+            <button [routerLink]="['signup']" class="btn btn-primary">Sign Up</button>
+            <!-- TODO (matt): Point to signin -->
+            <button [routerLink]="['/home']" class="btn btn-success">Log In</button>
+        </div>
+    </div>
+</div>

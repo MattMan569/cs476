@@ -1,0 +1,15 @@
+.container {
+    margin-top: 30px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.btn {
+    margin-right: 5px;
+}

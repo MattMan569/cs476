@@ -3,53 +3,34 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Projects</a>
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Messages</a>
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Calendar</a>
-            <a [routerLink]="['#']" routerLinkActive="active" class="nav-item nav-link">Users</a>
-            <div class="nav-item dropdown">
+            <!-- TODO (matt): implement these as child routes, maybe? -->
+            <a [routerLink]="['/projects']" routerLinkActive="active" class="nav-item nav-link"
+                >Projects</a
+            >
+            <a [routerLink]="['/messages']" routerLinkActive="active" class="nav-item nav-link"
+                >Messages</a
+            >
+            <a [routerLink]="['/calendar']" routerLinkActive="active" class="nav-item nav-link"
+                >Calendar</a
+            >
+            <a [routerLink]="['/users']" routerLinkActive="active" class="nav-item nav-link"
+                >Users</a
+            >
+            <div ngbDropdown class="nav-item">
                 <a
-                    class="nav-link dropdown-toggle"
-                    id="navbarDropdownMenuLink"
-                    data-toggle="dropdown"
+                    ngbDropdownToggle
+                    class="nav-link"
+                    id="dropdownBasic1"
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
                     Manage Account
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item">Log out</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <a [routerLink]="['#']" class="dropdown-item">View Profile</a>
+                    <a [routerLink]="['/']" class="dropdown-item">Log out</a>
                 </div>
             </div>
-
-            <!--
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a [routerLink]="['/recipes']">Recipes</a></li>
-                <li routerLinkActive="active">
-                    <a [routerLink]="['/shopping-list']">Shopping List</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <ng-template>
-                    <li><a routerLink="/signup">Register</a></li>
-                    <li><a routerLink="/signin">Login</a></li>
-                </ng-template>
-                <li>
-                    <a style="cursor: pointer;">
-                        Logout
-                    </a>
-                </li>
-                <li class="dropdown" appDropdown>
-                    <a class="dropdown-toggle" role="button" style="cursor: pointer;">
-                        Manage <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a style="cursor: pointer;">Save Data</a></li>
-                        <li><a style="cursor: pointer;">Fetch Data</a></li>
-                    </ul>
-                </li>
-            </ul>
-            -->
         </div>
     </div>
 </nav>
