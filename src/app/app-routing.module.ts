@@ -22,8 +22,10 @@ const routes: Routes = [
     { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
     { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
     { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
+    { path: 'projects:id', component: ProjectsComponent, canActivate: [AuthGuard] }, // Details of single project
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'profile:id', component: ProfileComponent, canActivate: [AuthGuard] }, // User of given ID
     { path: 'signup', component: SignupComponent },
     // { path: 'signin', component: UsersComponent }, // TODO
     { path: '**', component: NotFoundComponent }, // Wildcard path, 404 error
