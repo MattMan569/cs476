@@ -26,6 +26,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 
 // Directives
 import { PhoneMaskDirective } from './auth/signup/phone-mask.directive';
+import { ProfileComponent } from './home/profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { PhoneMaskDirective } from './auth/signup/phone-mask.directive';
         UserComponent,
         SignupComponent,
         PhoneMaskDirective,
+        ProfileComponent,
     ],
     imports: [
         BrowserModule,

@@ -14,6 +14,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 
 // Custom services
 import { AuthGuard } from './auth/auth-guard.service';
+import { ProfileComponent } from './home/profile/profile.component';
 
 const routes: Routes = [
     { path: '', component: LandingComponent }, // Default page if user is not logged in
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
     { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'signup', component: SignupComponent },
     // { path: 'signin', component: UsersComponent }, // TODO
     { path: '**', component: NotFoundComponent }, // Wildcard path, 404 error
